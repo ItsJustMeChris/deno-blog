@@ -1,7 +1,7 @@
 {
 	"info": {
 		"_postman_id": "73bc512b-6c1c-4035-9b57-e99df6336137",
-		"name": "ABC Deno Boilerplate",
+		"name": "Deno-Blog-Postman",
 		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
 	},
 	"item": [
@@ -18,7 +18,7 @@
 							"urlencoded": [
 								{
 									"key": "name",
-									"value": "chris",
+									"value": "chris3",
 									"type": "text"
 								},
 								{
@@ -103,6 +103,47 @@
 						}
 					},
 					"response": []
+				},
+				{
+					"name": "Update",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "urlencoded",
+							"urlencoded": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzUxMiIsInR5cCI6IkpXVCJ9.eyJleHAiOjE2MTA5NTgwNjMsInVzZXIiOnsiaWQiOjIsIm5hbWUiOiJjaHJpczIifX0.Wnn2O2CFSNhgTfr4zgVP4jY4TyQg-F7fs6nBs4GCtV7jmzIPAYFUDQqltc1S5H_sNtZhrwqpTvYWlXRS5By5Bg",
+									"type": "text"
+								},
+								{
+									"key": "name",
+									"value": "chris2",
+									"type": "text"
+								},
+								{
+									"key": "password",
+									"value": "test",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "http://localhost:8080/user/2/update",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"user",
+								"2",
+								"update"
+							]
+						}
+					},
+					"response": []
 				}
 			]
 		},
@@ -161,7 +202,7 @@
 							"urlencoded": [
 								{
 									"key": "token",
-									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjp7ImlkIjoxLCJuYW1lIjoiY2hyaXMifSwiZXhwIjoxNjAxNDc2NzIzfQ.cQkbS1Vgv_4-2WqHNqO-XYE0zzB46JEOSzlzHgEv180",
+									"value": "eyJhbGciOiJIUzUxMiIsInR5cCI6IkpXVCJ9.eyJleHAiOjE2MTA5MTYyNTMsInVzZXIiOnsiaWQiOjEsIm5hbWUiOiJjaHJpcyJ9fQ.DZADUxXHVp8SJ_q9u3LfnfpxDFCWhtUyEoamrJXZ6QvBESzrADPcf8WdVLZU05L-xO7XtlNmRkRzNpl_M6q_0g",
 									"type": "text"
 								},
 								{
@@ -170,34 +211,78 @@
 									"type": "text"
 								},
 								{
-									"key": "slug",
+									"key": "content",
 									"value": "test 1234",
 									"type": "text"
 								},
 								{
-									"key": "content",
+									"key": "image",
 									"value": "test 1234",
+									"type": "text"
+								},
+								{
+									"key": "slug",
+									"value": "asdf",
 									"type": "text"
 								}
 							]
 						},
 						"url": {
-							"raw": "http://localhost:8080/blog-post/new",
+							"raw": "http://localhost:8080/post/new",
 							"protocol": "http",
 							"host": [
 								"localhost"
 							],
 							"port": "8080",
 							"path": [
-								"blog-post",
+								"post",
 								"new"
 							],
 							"query": [
 								{
 									"key": "token",
-									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjp7Im5hbWUiOiJjaHJpcyIsImlkIjoxfSwiZXhwIjoxNTk4Nzk2NTQyfQ.D4ZeKAL8hz9iPxie-FTYdCn2KjPd4AkYe4M410SHpmc",
+									"value": "eyJhbGciOiJIUzUxMiIsInR5cCI6IkpXVCJ9.eyJleHAiOjE2MTA5MTU4MjcsInVzZXIiOnsibmFtZSI6ImNocmlzIiwiaWQiOjF9fQ.XwCysXiFji9iDabfzwA0rpv7wQA2PUwgczBiTOF30n_PBjvXFUQcCD_fPZpjxy6ZLvb6bQzVNdw9-MkilHotFg",
 									"disabled": true
 								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get One",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8080/post/1",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"post",
+								"1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8080/post",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"post"
 							]
 						}
 					},
