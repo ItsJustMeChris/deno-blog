@@ -1,6 +1,6 @@
-# ABC-Boilerplate
+# Deno Blog
 
-Boilerplate for Deno ABC
+Blog for Deno
 
 deno run --allow-read --allow-env --allow-net --unstable index.ts
 
@@ -19,3 +19,4 @@ Deno.
 ## Unstable Flag
 
 Unstable flag needed for bcrypt
+
