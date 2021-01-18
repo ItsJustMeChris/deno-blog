@@ -2,6 +2,7 @@ import { Database, PostgresConnector } from 'https://deno.land/x/denodb/mod.ts';
 
 import User from './user.ts';
 import RenewKey from './renew-key.ts';
+import Post from './post.ts';
 
 const DB_HOST: string = Deno.env.get('DB_HOST') || '';
 const DB_NAME: string = Deno.env.get('DB_NAME') || '';
@@ -18,11 +19,12 @@ const conn: PostgresConnector = new PostgresConnector({
 });
 
 const db = new Database(conn);
-db.link([User, RenewKey]);
+db.link([User, RenewKey, Post]);
 
 // await db.sync({ drop: false });
 
 export {
     User,
-    RenewKey
+    RenewKey,
+    Post
 }

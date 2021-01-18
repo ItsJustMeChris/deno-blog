@@ -1,5 +1,5 @@
 import { DataTypes, Model } from 'https://deno.land/x/denodb/mod.ts';
-import { RenewKey } from '../models/index.ts';
+import { RenewKey, Post } from '../models/index.ts';
 
 export default class User extends Model {
     static table: string = 'users';
@@ -11,7 +11,22 @@ export default class User extends Model {
         password: { type: DataTypes.STRING, allowNull: false }
     };
 
+    id!: number;
+    name!: string;
+    password!: string;
+
     static renewKeys() {
         return this.hasMany(RenewKey);
+    }
+
+    static posts() {
+        return this.hasMany(Post);
+    }
+
+    toJSON() {
+        return {
+            id: this.id,
+            name: this.name,
+        }
     }
 };
