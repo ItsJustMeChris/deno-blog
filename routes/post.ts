@@ -6,6 +6,6 @@ import jwt from '../middleware/jwt.ts';
 export default (group: Group): void => {
     group.post('/new', create, jwt);
     group.get('/id/:id', getById);
-    group.get('/slug/:id', getBySlug);
+    group.get('/slug/:slug', getBySlug);
     group.get('/', get);
 }
