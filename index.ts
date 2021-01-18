@@ -21,7 +21,7 @@ if (productionMode) {
     const certFile: string = Deno.env.get('SSL_CERT') || '';
     const keyFile: string = Deno.env.get('SSL_KEY') || '';
     const hostname: string = Deno.env.get('SERVER_HOSTNAME') || '';
-    const corsConfig = CONFIG || DefaultCORSConfig;
+    const corsConfig = CONFIG !== undefined ? CONFIG : DefaultCORSConfig;
     app.use(cors(corsConfig));
 
     app.startTLS({ port, certFile, keyFile, hostname })

@@ -105,7 +105,7 @@ const get = async (context: Context): Promise<PostInterface | StatusInterface | 
     }
 }
 
-const getOne = async (context: Context): Promise<PostInterface | StatusInterface | any> => {
+const getById = async (context: Context): Promise<PostInterface | StatusInterface | any> => {
     try {
         const { id } = context.params;
 
@@ -141,8 +141,45 @@ const getOne = async (context: Context): Promise<PostInterface | StatusInterface
     }
 }
 
+const getBySlug = async (context: Context): Promise<PostInterface | StatusInterface | any> => {
+    try {
+        const { slug } = context.params;
+
+        if (!slug) return context.json(
+            {
+                status: 'error',
+                message: 'Invalid Post Slug'
+            },
+            Status.BadRequest
+        );
+
+        const post: Post = await Post.where({ slug }).first() as Post;
+        const user: User = await User.select('name').find(post.userId) as User;
+
+        return context.json(
+            {
+                status: 'success',
+                message: 'Fetched Post',
+                post,
+                user: {
+                    ...user
+                }
+            }
+        );
+    } catch (error) {
+        return context.json(
+            {
+                status: 'error',
+                message: 'Failed to fetch post'
+            },
+            Status.InternalServerError
+        );
+    }
+}
+
 export {
     create,
     get,
-    getOne,
+    getBySlug,
+    getById,
 }
