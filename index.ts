@@ -9,15 +9,15 @@ const app: Application = new Application();
 routes(app);
 
 const productionMode: boolean = Boolean(Deno.env.get('production'));
+const port: number = Number(Deno.env.get('SERVER_PORT')) || 8080;
 
 if (productionMode) {
     // ENV
-    const port: number = Number(Deno.env.get('SERVER_PORT'));
     const certFile: string = Deno.env.get('SSL_CERT') || '';
     const keyFile: string = Deno.env.get('SSL_KEY') || '';
     const hostname: string = Deno.env.get('SERVER_HOSTNAME') || '';
 
     app.startTLS({ port, certFile, keyFile, hostname })
 } else {
-    app.start({ port: 8080 });
+    app.start({ port });
 }

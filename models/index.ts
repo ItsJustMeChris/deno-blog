@@ -21,7 +21,11 @@ const conn: PostgresConnector = new PostgresConnector({
 const db = new Database(conn);
 db.link([User, RenewKey, Post]);
 
-// await db.sync({ drop: false });
+try {
+    await db.sync({ drop: false });
+} catch (e) {
+    
+}
 
 export {
     User,
